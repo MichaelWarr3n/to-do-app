@@ -44,8 +44,9 @@ footer, header, hgroup, menu, nav, section {
 }
 
 #app {
-  height: 100vh;
-  width: 100vw;
+  min-height: 100vh;
+  height: 100%;
+  width: 100%;
   background-color: #D3C8C2;
   background-image: url("./assets/pexels-mike-sember-6043246.jpg");
   background-repeat: no-repeat;

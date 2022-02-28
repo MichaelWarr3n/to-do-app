@@ -9,16 +9,16 @@
 
     <table class="to-do-table">
       <tr>
-        <th class="task-header task-name">Task</th>
+        <th class="task-header task-name-title">Task</th>
         <th class="task-header">Status</th>
         <th class="task-header">Edit Status</th>
         <th class="task-header">Delete Task</th>
       </tr>
-      <tr v-for="(task, index) in tasks" :key="index">
-        <td class="task-row">{{task.name}}</td>
-        <td class="task-row center-icons" v-bind:class="{ 'task-to-do':(task.status === 'to-do'), 'task-in-progress':(task.status === 'in progress'), 'task-complete':(task.status === 'complete') }">{{task.status}}</td>
-        <td class="task-row center-icons select-icon" @click="editTask(index)"><span class="fa fa-pen"></span></td>
-        <td class="task-row center-icons select-icon" @click="deleteTask(index)"><span class="fa fa-trash"></span></td>
+      <tr v-for="(task, index) in tasks" :key="index" class="task-container">
+        <td class="task-name task-row">{{task.name}}</td>
+        <td class="task-status task-row center-icons" v-bind:class="{ 'task-to-do':(task.status === 'to-do'), 'task-in-progress':(task.status === 'in progress'), 'task-complete':(task.status === 'complete') }">{{task.status}}</td>
+        <td class="task-edit task-row center-icons select-icon" @click="editTask(index)"><span class="fa fa-pen"></span></td>
+        <td class="task-delete task-row center-icons select-icon" @click="deleteTask(index)"><span class="fa fa-trash"></span></td>
       </tr>
     </table>
   </div>
@@ -111,6 +111,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    padding-bottom: 50px;
   }
 
   .main-title {
@@ -176,8 +177,8 @@
     min-width: 10vw;
   }
 
-  .task-name {
-    min-width: 50vw;
+  .task-name-title {
+    width: 50vw;
   }
 
   .task-to-do {
@@ -190,6 +191,46 @@
 
   .task-complete {
     background-color: #9ACD32;
+  }
+
+  @media only screen and (max-width: 700px) {
+
+    .task-name-title {
+      width: 30vw;
+    }
+
+    .task-row {
+      font-size: 16px;
+    }
+
+  }
+
+  @media only screen and (max-width: 410px) {
+
+    .task-header {
+      min-width: 5vw;
+      max-width: 15vw;
+    }
+
+    .task-name-title {
+      width: 25vw;
+    }
+
+    .task-row {
+      font-size: 16px;
+    }
+
+    .input-task-container {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .input-task-text {
+      width: 80vw;
+      margin-right: 0;
+      margin-bottom: 10px;
+    }
+
   }
 
 </style>
